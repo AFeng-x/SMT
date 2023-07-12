@@ -1,0 +1,14 @@
+MODEL:
+  TYPE: smt
+  NAME: smt_tiny_224
+  DROP_PATH_RATE: 0.1
+  SMT:
+    EMBED_DIMS: [64, 128, 256, 512]
+    CA_NUM_HEADS: [4, 4, 4, -1]
+    SA_NUM_HEADS: [-1, -1, 8, 16]
+    MLP_RATIOS: [4, 4, 4, 2]
+    QKV_BIAS: True
+    DEPTHS: [ 2, 2, 8, 1]
+    CA_ATTENTIONS: [ 1, 1, 1, 0 ]
+    HEAD_CONV: 3
+    EXPAND_RATIO: 2

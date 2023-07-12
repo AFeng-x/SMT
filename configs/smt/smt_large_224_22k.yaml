@@ -1,0 +1,25 @@
+DATA:
+  DATASET: imagenet22K
+MODEL:
+  TYPE: smt
+  NAME: smt_large_224_22k
+  DROP_PATH_RATE: 0.1
+  SMT:
+    EMBED_DIMS: [96, 192, 384, 768]
+    CA_NUM_HEADS: [4, 4, 4, -1]
+    SA_NUM_HEADS: [-1, -1, 8, 16]
+    MLP_RATIOS: [8, 6, 4, 2]
+    QKV_BIAS: True
+    USE_LAYERSCALE: True
+    DEPTHS: [ 4, 6, 28, 4 ]
+    CA_ATTENTIONS: [ 1, 1, 1, 0 ]
+    HEAD_CONV: 7
+    EXPAND_RATIO: 2
+TRAIN:
+  EPOCHS: 90
+  WARMUP_EPOCHS: 5
+  WEIGHT_DECAY: 0.05
+  BASE_LR: 1.25e-4 # 4096 batch-size
+  WARMUP_LR: 1.25e-7
+  MIN_LR: 1.25e-6
+

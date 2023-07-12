@@ -1,0 +1,14 @@
+MODEL:
+  TYPE: smt
+  NAME: smt_large_224
+  DROP_PATH_RATE: 0.4
+  SMT:
+    EMBED_DIMS: [96, 192, 384, 768]
+    CA_NUM_HEADS: [4, 4, 4, -1]
+    SA_NUM_HEADS: [-1, -1, 8, 16]
+    MLP_RATIOS: [8, 6, 4, 2]
+    USE_LAYERSCALE: True
+    DEPTHS: [ 4, 6, 28, 4 ]
+    CA_ATTENTIONS: [ 1, 1, 1, 0 ]
+    HEAD_CONV: 7
+    EXPAND_RATIO: 2

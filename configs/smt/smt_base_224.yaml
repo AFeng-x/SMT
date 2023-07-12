@@ -1,0 +1,14 @@
+MODEL:
+  TYPE: smt
+  NAME: smt_base_224
+  DROP_PATH_RATE: 0.3
+  SMT:
+    EMBED_DIMS: [64, 128, 256, 512]
+    CA_NUM_HEADS: [4, 4, 4, -1]
+    SA_NUM_HEADS: [-1, -1, 8, 16]
+    MLP_RATIOS: [8, 6, 4, 2]
+    QKV_BIAS: True
+    DEPTHS: [ 4, 6, 28, 2]
+    CA_ATTENTIONS: [ 1, 1, 1, 0 ]
+    HEAD_CONV: 7
+    EXPAND_RATIO: 2

@@ -1,0 +1,26 @@
+DATA:
+  IMG_SIZE: 384
+MODEL:
+  TYPE: smt
+  NAME: smt_large_384_22kto1k_finetune
+  DROP_PATH_RATE: 0.1
+  SMT:
+    EMBED_DIMS: [96, 192, 384, 768]
+    CA_NUM_HEADS: [4, 4, 4, -1]
+    SA_NUM_HEADS: [-1, -1, 8, 16]
+    MLP_RATIOS: [8, 6, 4, 2]
+    QKV_BIAS: True
+    USE_LAYERSCALE: True
+    DEPTHS: [ 4, 6, 28, 4 ]
+    CA_ATTENTIONS: [ 1, 1, 1, 0 ]
+    HEAD_CONV: 7
+    EXPAND_RATIO: 2
+TRAIN:
+  EPOCHS: 30
+  WARMUP_EPOCHS: 5
+  WEIGHT_DECAY: 0.05
+  BASE_LR: 2e-05
+  WARMUP_LR: 2e-08
+  MIN_LR: 2e-07
+TEST:
+  CROP: False
