@@ -13,7 +13,6 @@ This repo is the official implementation of ["Scale-Aware Modulation Meet Transf
 
 **SMT** is initially described in [arxiv](https://arxiv.org/abs/2103.14030), which capably serves as a promising new generic backbone for efficient visual modeling.
 SMT is a new hybrid ConvNet and vision Transformer backbone, which can effectively simulate the transition from local to global dependencies as the network goes deeper, resulting in superior performance over both ConvNets and Transformers.
-
 ![teaser](figures/teaser.png)
 
 ## Main Results on ImageNet with Pretrained Models
