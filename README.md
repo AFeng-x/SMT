@@ -18,7 +18,7 @@ general-purpose backbone for computer vision. It is basically a hierarchical Tra
 
 ## Main Results on ImageNet with Pretrained Models
 
-**ImageNet-1K and ImageNet-22K Pretrained Swin-V1 Models**
+**ImageNet-1K and ImageNet-22K Pretrained SMT Models**
 
 | name | pretrain | resolution |acc@1 | acc@5 | #params | FLOPs | 22K model | 1K model |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |:---: |
