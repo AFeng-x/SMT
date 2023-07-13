@@ -11,8 +11,8 @@ This repo is the official implementation of ["Scale-Aware Modulation Meet Transf
 
 ## Introduction
 
-**SMT** is initially described in [arxiv](https://arxiv.org/abs/2103.14030), which capably serves as a
-general-purpose backbone for computer vision. It is basically a hierarchical Transformer whose representation is computed with shifted windows. The shifted windowing scheme brings greater efficiency by limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection.
+**SMT** is initially described in [arxiv](https://arxiv.org/abs/2103.14030), which capably serves as a promising new generic backbone for efficient visual modeling.
+SMT is a new hybrid ConvNet and vision Transformer backbone, which can effectively simulate the transition from local to global dependencies as the network goes deeper, resulting in superior performance over both ConvNets and Transformers.
 
 ![teaser](figures/teaser.png)
 
@@ -48,8 +48,8 @@ general-purpose backbone for computer vision. It is basically a hierarchical Tra
 
 | Backbone | Method | pretrain | Crop Size | Lr Schd | mIoU (ss) | mIoU (ms) | #params | FLOPs |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Swin-S | UperNet | ImageNet-1K | 512x512 | 160K | 49.2 | 50.2 | 50M | 935G |
-| Swin-B | UperNet | ImageNet-1K | 512x512 | 160K | 49.6 | 50.6 | 62M | 1004G |
+| SMT-S | UperNet | ImageNet-1K | 512x512 | 160K | 49.2 | 50.2 | 50M | 935G |
+| SMT-B | UperNet | ImageNet-1K | 512x512 | 160K | 49.6 | 50.6 | 62M | 1004G |
 
 
 ## Getting Started
@@ -91,7 +91,9 @@ pip install opencv-python==4.4.0.46 termcolor==1.1.0 yacs==0.1.8 pyyaml scipy pt
 To evaluate a pre-trained `SMT` on ImageNet val, run:
 
 ```bash
-bash eval.sh
+python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345 main.py --eval \
+--cfg configs/smt/smt_base_224.yaml --resume /path/to/ckpt.pth \
+--data-path /path/to/imagenet-1k
 ```
 
 ### Training from scratch on ImageNet-1K
@@ -99,7 +101,9 @@ bash eval.sh
 To train a `Swin Transformer` on ImageNet from scratch, run:
 
 ```bash
-bash train.sh
+python -m torch.distributed.launch --master_port 4444 --nproc_per_node 8 main.py \
+--cfg configs/smt/smt_tiny_224.yaml \
+--data-path /path/to/imagenet-1k --batch-size 128
 ```
 
 ### Pre-training on ImageNet-22K
@@ -107,13 +111,18 @@ bash train.sh
 For example, to pre-train a `Swin-B` model on ImageNet-22K:
 
 ```bash
-bash train_pre_22k.sh
+python -m torch.distributed.launch --nproc_per_node 8 --master_port 12345  main.py \
+--cfg configs/smt/smt_large_224_22k.yaml --data-path /path/to/imagenet-22k \
+--batch-size 128 --accumulation-steps 4 
 ```
 
 ### Fine-tuning
 
 ```bashs
-bash train_ft_22k.sh
+python -m torch.distributed.launch --nproc_per_node 8 --master_port 12345  main.py \
+--cfg configs/smt/smt_large_384_22kto1k_finetune.yaml \
+--pretrained /path/to/pretrain_ckpt.pth --data-path /path/to/imagenet-1k \
+--batch-size 64 [--use-checkpoint]
 ```
 
 ### Throughput
@@ -121,7 +130,8 @@ bash train_ft_22k.sh
 To measure the throughput, run:
 
 ```bash
-bash test_throughput.sh
+python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345  main.py \
+--cfg <config-file> --data-path <imagenet-path> --batch-size 64 --throughput --disable_amp
 ```
 
 ## Citing SMT
