@@ -14,14 +14,14 @@ This repo is the official implementation of ["Scale-Aware Modulation Meet Transf
 **SMT** is initially described in [arxiv](https://arxiv.org/abs/2103.14030), which capably serves as a
 general-purpose backbone for computer vision. It is basically a hierarchical Transformer whose representation is computed with shifted windows. The shifted windowing scheme brings greater efficiency by limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection.
 
-![teaser](figures/teaser.png)
+![teaser](figures/teaser.pdf)
 
 ## Main Results on ImageNet with Pretrained Models
 
 **ImageNet-1K and ImageNet-22K Pretrained Swin-V1 Models**
 
 | name | pretrain | resolution |acc@1 | acc@5 | #params | FLOPs | 22K model | 1K model |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |:---: |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |:---: |
 | SMT-T | ImageNet-1K | 224x224 | 82.2 | 96.0 | 12M | 2.4G | - | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth)/[baidu](https://pan.baidu.com/s/156nWJy4Q28rDlrX-rRbI3w)/[config](configs/swin/swin_tiny_patch4_window7_224.yaml)/[log](https://github.com/SwinTransformer/storage/files/7745562/log_swin_tiny_patch4_window7_224.txt) |
 | SMT-S | ImageNet-1K | 224x224 | 83.7 | 96.5 | 21M | 4.7G | - | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_small_patch4_window7_224.pth)/[baidu](https://pan.baidu.com/s/1KFjpj3Efey3LmtE1QqPeQg)/[config](configs/swin/swin_small_patch4_window7_224.yaml)/[log](https://github.com/SwinTransformer/storage/files/7745563/log_swin_small_patch4_window7_224.txt) |
 | SMT-B | ImageNet-1K | 224x224 | 84.3 | 96.9 | 32M | 7.7G | - | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224.pth)/[baidu](https://pan.baidu.com/s/16bqCTEc70nC_isSsgBSaqQ)/[config](configs/swin/swin_base_patch4_window7_224.yaml)/[log](https://github.com/SwinTransformer/storage/files/7745564/log_swin_base_patch4_window7_224.txt) |
