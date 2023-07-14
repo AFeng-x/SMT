@@ -22,11 +22,11 @@ SMT is a new hybrid ConvNet and vision Transformer backbone, which can effective
 
 | name | pretrain | resolution |acc@1 | acc@5 | #params | FLOPs | 22K model | 1K model |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |:---: |
-| SMT-T | ImageNet-1K | 224x224 | 82.2 | 96.0 | 12M | 2.4G | - | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth)/[config](configs/smt/smt_tiny_224.yaml)/[log](https://github.com/SwinTransformer/storage/files/7745562/log_swin_tiny_patch4_window7_224.txt) |
-| SMT-S | ImageNet-1K | 224x224 | 83.7 | 96.5 | 21M | 4.7G | - | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_small_patch4_window7_224.pth)/[config](configs/smt/smt_small_224.yaml)/[log](https://github.com/SwinTransformer/storage/files/7745563/log_swin_small_patch4_window7_224.txt) |
-| SMT-B | ImageNet-1K | 224x224 | 84.3 | 96.9 | 32M | 7.7G | - | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224.pth)/[baidu](https://pan.baidu.com/s/16bqCTEc70nC_isSsgBSaqQ)/[config](configs/smt/smt_base_224.yaml)/[log](https://github.com/SwinTransformer/storage/files/7745564/log_swin_base_patch4_window7_224.txt) |
-| SMT-L | ImageNet-22K | 224x224 | 87.1 | 98.1 | 81M | 17.6G | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22k.pth)/[config](configs/smt/smt_large_224.yaml) | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22kto1k.pth)/[config](configs/smt/smt_large_224_22kto1k_finetune.yaml) |
-| SMT-L | ImageNet-22K | 384x384 | 88.1 | 98.4 | 81M | 51.6G | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window12_384_22k.pth)/[config](configs/smt/smt_large_224.yaml) | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window12_384_22kto1k.pth)/[config](configs/smt/smt_large_384_22kto1k_finetune.yaml) |
+| SMT-T | ImageNet-1K | 224x224 | 82.2 | 96.0 | 12M | 2.4G | - | [github]()/[config](configs/smt/smt_tiny_224.yaml)/ |
+| SMT-S | ImageNet-1K | 224x224 | 83.7 | 96.5 | 21M | 4.7G | - | [github](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_small_patch4_window7_224.pth)/[config](configs/smt/smt_small_224.yaml) |
+| SMT-B | ImageNet-1K | 224x224 | 84.3 | 96.9 | 32M | 7.7G | - | [github]()|
+| SMT-L | ImageNet-22K | 224x224 | 87.1 | 98.1 | 81M | 17.6G | [github]()/[config](configs/smt/smt_large_224.yaml) | [github]()/[config](configs/smt/smt_large_224_22kto1k_finetune.yaml) |
+| SMT-L | ImageNet-22K | 384x384 | 88.1 | 98.4 | 81M | 51.6G | [github](h)/[config](configs/smt/smt_large_224.yaml) | [github]()/[config](configs/smt/smt_large_384_22kto1k_finetune.yaml) |
 
 
 ## Main Results on Downstream Tasks
@@ -98,7 +98,7 @@ python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345 main.p
 
 ### Training from scratch on ImageNet-1K
 
-To train a `Swin Transformer` on ImageNet from scratch, run:
+To train a `SMT` on ImageNet from scratch, run:
 
 ```bash
 python -m torch.distributed.launch --master_port 4444 --nproc_per_node 8 main.py \
@@ -108,7 +108,7 @@ python -m torch.distributed.launch --master_port 4444 --nproc_per_node 8 main.py
 
 ### Pre-training on ImageNet-22K
 
-For example, to pre-train a `Swin-B` model on ImageNet-22K:
+For example, to pre-train a `SMT-Large` model on ImageNet-22K:
 
 ```bash
 python -m torch.distributed.launch --nproc_per_node 8 --master_port 12345  main.py \
