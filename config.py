@@ -31,10 +31,6 @@ _C.DATA.PIN_MEMORY = True
 # Number of data loading threads
 _C.DATA.NUM_WORKERS = 8
 
-# [SimMIM] Mask patch size for MaskGenerator
-_C.DATA.MASK_PATCH_SIZE = 32
-# [SimMIM] Mask ratio for MaskGenerator
-_C.DATA.MASK_RATIO = 0.6
 
 # -----------------------------------------------------------------------------
 # Model settings
@@ -59,7 +55,6 @@ _C.MODEL.DROP_PATH_RATE = 0.1
 _C.MODEL.LABEL_SMOOTHING = 0.1  #0.1
 
 
-
 # SMT parameters
 _C.MODEL.SMT = CN()
 _C.MODEL.SMT.PATCH_SIZE = 4
@@ -73,7 +68,7 @@ _C.MODEL.SMT.QK_SCALE = None
 _C.MODEL.SMT.USE_LAYERSCALE = False
 _C.MODEL.SMT.DEPTHS = [ 2, 2, 8, 1 ]
 _C.MODEL.SMT.CA_ATTENTIONS = [ 1, 1, 1, 0 ]
-_C.MODEL.SMT.HEAD_CONV = 7
+_C.MODEL.SMT.HEAD_CONV = 3
 _C.MODEL.SMT.NUM_STAGES = 4
 _C.MODEL.SMT.EXPAND_RATIO = 2
 
