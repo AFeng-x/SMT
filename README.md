@@ -137,16 +137,16 @@ python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345  main.
 --cfg <config-file> --data-path <imagenet-path> --batch-size 64 --throughput --disable_amp
 ```
 
-<!-- ## Citing SMT
+## Citation
 
-```
+<!-- ```
 @inproceedings{lin2023SMT,
   title={Scale-Aware Modulation Meet Transformer},
   author={Lin, Weifeng and Wu, Ziheng and Chen, Jiayu and Huang, Jun and Jin, Lianwen},
   booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
   year={2023}
 }
-``` -->
+```  -->
 
 ### Acknowledgement
 This repository is built on top of the [timm](https://github.com/rwightman/pytorch-image-models) library and the official [Swin Transformer](https://github.com/microsoft/Swin-Transformer) repository.
