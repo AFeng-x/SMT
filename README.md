@@ -1,5 +1,5 @@
 # Scale-Aware Modulation Meet Transformer
-This repo is the official implementation of "Scale-Aware Modulation Meet Transformer".
+This repo is the official implementation of "[Scale-Aware Modulation Meet Transformer]()".
 
 <!-- [[`SMT Paper`](https://github.com/AFeng-x/SMT)] [[`BibTex`](#avocado-citing-stable-dino)]  -->
 
@@ -12,11 +12,10 @@ This repo is the official implementation of "Scale-Aware Modulation Meet Transfo
 - **`14 Jul, 2023`:** Related code for detection and segmentation is coming soon. The paper will be available soon.
 - **`14 Jul, 2023`:** SMT is accepted to ICCV 2023!
 
-
 ## Introduction
 
 **SMT** is capably serves as a promising new generic backbone for efficient visual modeling.
-SMT is a new hybrid ConvNet and vision Transformer backbone, which can effectively simulate the transition from local to global dependencies as the network goes deeper, resulting in superior performance over both ConvNets and Transformers.
+It is a new hybrid ConvNet and vision Transformer backbone, which can effectively simulate the transition from local to global dependencies as the network goes deeper, resulting in superior performance over both ConvNets and Transformers.
 ![teaser](figures/teaser.png)
 
 ## Main Results on ImageNet with Pretrained Models
