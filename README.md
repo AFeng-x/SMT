@@ -1,12 +1,7 @@
-<h2 align="center"> Scale-Aware Modulation Meet Transformer </h2>
-
-[Weifeng Lin](https://github.com/Afeng-x), [Ziheng Wu](https://github.com/tuofeilunhifi), [Jiayu Chen](https://github.com/tuofeilunhifi), [Jun Huang](https://github.com/IDEA-Research/Stable-DINO), [Lianwen Jin]()
-
-<!-- [[`SMT Paper`](https://github.com/AFeng-x/SMT)] [[`BibTex`](#avocado-citing-stable-dino)]  -->
 
 # Scale-Aware Modulation Meet Transformer
-
 This repo is the official implementation of "Scale-Aware Modulation Meet Transformer".
+[[`SMT Paper`](https://github.com/AFeng-x/SMT)] [[`BibTex`](#avocado-citing-stable-dino)] 
 
 <!-- It currently includes code and models for the following tasks:
 
@@ -14,7 +9,7 @@ This repo is the official implementation of "Scale-Aware Modulation Meet Transfo
 > **Object Detection and Instance Segmentation**
 > **Semantic Segmentation** -->
 ## 📣 Announcement
-- **`15 Jul, 2023`:**Related code for detection and segmentation is coming soon. The paper will be available soon.
+- **`15 Jul, 2023`:** Related code for detection and segmentation is coming soon. The paper will be available soon.
 - **`14 Jul, 2023`:** SMT is accepted to ICCV 2023!
 
 
