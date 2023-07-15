@@ -1,6 +1,11 @@
+<h2 align="center"> Scale-Aware Modulation Meet Transformer </h2>
+
+[Weifeng Lin](https://github.com/Afeng-x), [Ziheng Wu](https://github.com/tuofeilunhifi), [Jiayu Chen](https://github.com/tuofeilunhifi), [Jun Huang](https://github.com/IDEA-Research/Stable-DINO), [Lianwen Jin]()
+
+<!-- [[`SMT Paper`](https://github.com/AFeng-x/SMT)] [[`BibTex`](#avocado-citing-stable-dino)]  -->
+
 # Scale-Aware Modulation Meet Transformer
 
-<!-- This repo is the official implementation of ["Scale-Aware Modulation Meet Transformer"](https://arxiv.org/pdf/2103.14030.pdf) as well as the follow-ups.  -->
 This repo is the official implementation of "Scale-Aware Modulation Meet Transformer".
 
 <!-- It currently includes code and models for the following tasks:
@@ -9,12 +14,13 @@ This repo is the official implementation of "Scale-Aware Modulation Meet Transfo
 > **Object Detection and Instance Segmentation**
 > **Semantic Segmentation** -->
 ## 📣 Announcement
-Related code for detection and segmentation is coming soon. The paper will be available soon.
+- **`15 Jul, 2023`:**Related code for detection and segmentation is coming soon. The paper will be available soon.
+- **`14 Jul, 2023`:** SMT is accepted to ICCV 2023!
 
 
 ## Introduction
 
-**SMT** is initially described in [paper](https://github.com/AFeng-x/SMT)(released soon), which capably serves as a promising new generic backbone for efficient visual modeling.
+**SMT** is capably serves as a promising new generic backbone for efficient visual modeling.
 SMT is a new hybrid ConvNet and vision Transformer backbone, which can effectively simulate the transition from local to global dependencies as the network goes deeper, resulting in superior performance over both ConvNets and Transformers.
 ![teaser](figures/teaser.png)
 

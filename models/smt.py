@@ -67,14 +67,11 @@ class Attention(nn.Module):
         self.split_groups=self.dim//ca_num_heads
 
         if ca_attention == 1:
-
             self.v = nn.Linear(dim, dim, bias=qkv_bias)
             self.s = nn.Linear(dim, dim, bias=qkv_bias)
-
             for i in range(self.ca_num_heads):
                 local_conv = nn.Conv2d(dim//self.ca_num_heads, dim//self.ca_num_heads, kernel_size=(3+i*2), padding=(1+i), stride=1, groups=dim//self.ca_num_heads)
                 setattr(self, f"local_conv_{i + 1}", local_conv)
-
             self.proj0 = nn.Conv2d(dim, dim*expand_ratio, kernel_size=1, padding=0, stride=1, groups=split_groups)
             self.bn = nn.BatchNorm2d(dim*expand_ratio)
             self.proj1 = nn.Conv2d(dim*expand_ratio, dim, kernel_size=1, padding=0, stride=1)
@@ -82,15 +79,13 @@ class Attention(nn.Module):
         else:
             head_dim = dim // sa_num_heads
             self.scale = qk_scale or head_dim ** -0.5
-
             self.q = nn.Linear(dim, dim, bias=qkv_bias)
-
             self.attn_drop = nn.Dropout(attn_drop)
-
             self.kv = nn.Linear(dim, dim * 2, bias=qkv_bias)
             self.local_conv = nn.Conv2d(dim, dim, kernel_size=3, padding=1, stride=1, groups=dim)
         
         self.apply(self._init_weights)
+
 
     def _init_weights(self, m):
         if isinstance(m, nn.Linear):
@@ -117,26 +112,21 @@ class Attention(nn.Module):
                 local_conv = getattr(self, f"local_conv_{i + 1}")
                 s_i= s[i]
                 s_i = local_conv(s_i).reshape(B, self.split_groups, -1, H, W)
-                
                 if i == 0:
                     s_out = s_i
                 else:
                     s_out = torch.cat([s_out,s_i],2)
-
             s_out = s_out.reshape(B, C, H, W)
             s_out = self.proj1(self.act(self.bn(self.proj0(s_out)))).reshape(B, C, N).permute(0, 2, 1)
-
             x = s_out * v
 
         else:
             q = self.q(x).reshape(B, N, self.sa_num_heads, C // self.sa_num_heads).permute(0, 2, 1, 3)
             kv = self.kv(x).reshape(B, -1, 2, self.sa_num_heads, C // self.sa_num_heads).permute(2, 0, 3, 1, 4)
             k, v = kv[0], kv[1]
-
             attn = (q @ k.transpose(-2, -1)) * self.scale
             attn = attn.softmax(dim=-1)
             attn = self.attn_drop(attn)
-
             x = (attn @ v).transpose(1, 2).reshape(B, N, C) + self.local_conv(v.transpose(1, 2).reshape(B, N, C).
                                         transpose(1, 2).view(B,C, H, W)).view(B, C, N).transpose(1, 2)
         
@@ -402,7 +392,7 @@ def smt_b(pretrained=False, **kwargs):
 def smt_l(pretrained=False, **kwargs):
     model = SMT(
         embed_dims=[96, 192, 384, 768], ca_num_heads=[4, 4, 4, -1], sa_num_heads=[-1, -1, 8, 16], mlp_ratios=[8, 6, 4, 2], 
-        qkv_bias=True, depths=[4, 6, 28, 3], ca_attentions=[1, 1, 1, 0], head_conv=7, expand_ratio=2, **kwargs)
+        qkv_bias=True, depths=[4, 6, 28, 4], ca_attentions=[1, 1, 1, 0], head_conv=7, expand_ratio=2, **kwargs)
     model.default_cfg = _cfg()
 
     return model
