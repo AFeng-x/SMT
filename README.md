@@ -9,7 +9,7 @@ This repo is the official implementation of "[Scale-Aware Modulation Meet Transf
 > **Object Detection and Instance Segmentation**
 > **Semantic Segmentation** -->
 ## 📣 Announcement
-- **`14 Jul, 2023`:** Related code for detection and segmentation is coming soon. The paper will be available soon.
+- **`14 Jul, 2023`:** The paper will be available soon.
 - **`14 Jul, 2023`:** SMT is accepted to ICCV 2023!
 
 ## Introduction
