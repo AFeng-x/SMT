@@ -72,7 +72,7 @@ class Attention(nn.Module):
             for i in range(self.ca_num_heads):
                 local_conv = nn.Conv2d(dim//self.ca_num_heads, dim//self.ca_num_heads, kernel_size=(3+i*2), padding=(1+i), stride=1, groups=dim//self.ca_num_heads)
                 setattr(self, f"local_conv_{i + 1}", local_conv)
-            self.proj0 = nn.Conv2d(dim, dim*expand_ratio, kernel_size=1, padding=0, stride=1, groups=split_groups)
+            self.proj0 = nn.Conv2d(dim, dim*expand_ratio, kernel_size=1, padding=0, stride=1, groups=self.split_groups)
             self.bn = nn.BatchNorm2d(dim*expand_ratio)
             self.proj1 = nn.Conv2d(dim*expand_ratio, dim, kernel_size=1, padding=0, stride=1)
 

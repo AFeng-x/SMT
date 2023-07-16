@@ -1,7 +1,7 @@
 # Scale-Aware Modulation Meet Transformer
 This repo is the official implementation of "[Scale-Aware Modulation Meet Transformer]()".
 
-<!-- [[`SMT Paper`](https://github.com/AFeng-x/SMT)] [[`BibTex`](#avocado-citing-stable-dino)]  -->
+<!-- [[`SMT Paper`](https://github.com/AFeng-x/SMT)] -->
 
 <!-- It currently includes code and models for the following tasks:
 
