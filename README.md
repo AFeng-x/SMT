@@ -9,6 +9,7 @@ This repo is the official implementation of "[Scale-Aware Modulation Meet Transf
 > **Object Detection and Instance Segmentation**
 > **Semantic Segmentation** -->
 ## 📣 Announcement
+- **`16 Jul, 2023`:** The detection code and segmentation code are now open source and available!
 - **`14 Jul, 2023`:** The paper will be available soon.
 - **`14 Jul, 2023`:** SMT is accepted to ICCV 2023!
 
@@ -149,4 +150,4 @@ python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345  main.
 ```  -->
 
 ### Acknowledgement
-This repository is built on top of the [timm](https://github.com/rwightman/pytorch-image-models) library and the official [Swin Transformer](https://github.com/microsoft/Swin-Transformer) repository.
+This repository is built on top of the [timm](https://github.com/rwightman/pytorch-image-models) library and the official [Swin Transformer](https://github.com/microsoft/Swin-Transformer) repository. For object detection, we utilize [mmdetection](https://github.com/open-mmlab/mmdetection) and adopt the pipeline configuration from [Swin-Transformer-Object-Detection](https://github.com/SwinTransformer/Swin-Transformer-Object-Detection). Moreover, we incorporate [detrex](https://github.com/IDEA-Research/detrex) for implementing the DINO method. As for semantic segmentation, we employ [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) and ollow the pipeline setup outlined in [Swin-Transformer-Semantic-Segmentation](https://github.com/SwinTransformer/Swin-Transformer-Semantic-Segmentation).
