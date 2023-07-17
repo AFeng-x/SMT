@@ -94,7 +94,7 @@ class Attention(BaseModule):
             self.q = nn.Linear(dim, dim, bias=qkv_bias)
             self.attn_drop = nn.Dropout(attn_drop)
             self.kv = nn.Linear(dim, dim * 2, bias=qkv_bias)
-            self.local_conv = nn.Conv2d(dim, dim, kernel_size=3, padding=1, stride=1, groups=dim)
+            self.dw_conv = nn.Conv2d(dim, dim, kernel_size=3, padding=1, stride=1, groups=dim)
         
 
     def forward(self, x, H, W):
@@ -125,9 +125,9 @@ class Attention(BaseModule):
             attn = attn.softmax(dim=-1)
             attn = self.attn_drop(attn)
 
-            x = (attn @ v).transpose(1, 2).reshape(B, N, C) + self.local_conv(v.transpose(1, 2).reshape(B, N, C).
-                                        transpose(1, 2).view(B,C, H, W)).view(B, C, N).transpose(1, 2)
-            
+            x = (attn @ v).transpose(1, 2).reshape(B, N, C) + \
+                self.dw_conv(v.transpose(1, 2).reshape(B, N, C).transpose(1, 2).view(B,C, H, W)).view(B, C, N).transpose(1, 2)
+        
         x = self.proj(x)
         x = self.proj_drop(x)
 
