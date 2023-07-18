@@ -1,5 +1,5 @@
 # Scale-Aware Modulation Meet Transformer
-This repo is the official implementation of "[Scale-Aware Modulation Meet Transformer]()".
+This repo is the official implementation of "[Scale-Aware Modulation Meet Transformer](https://arxiv.org/abs/2307.08579)".
 
 <!-- [[`SMT Paper`](https://github.com/AFeng-x/SMT)] -->
 
@@ -9,8 +9,8 @@ This repo is the official implementation of "[Scale-Aware Modulation Meet Transf
 > **Object Detection and Instance Segmentation**
 > **Semantic Segmentation** -->
 ## 📣 Announcement
+- **`18 Jul, 2023`:** The paper is available on [arXiv](https://arxiv.org/abs/2307.08579).
 - **`16 Jul, 2023`:** The detection code and segmentation code are now open source and available!
-- **`14 Jul, 2023`:** The paper will be available soon.
 - **`14 Jul, 2023`:** SMT is accepted to ICCV 2023!
 
 ## Introduction
