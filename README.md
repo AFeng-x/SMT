@@ -140,14 +140,16 @@ python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345  main.
 
 ## Citation
 
-<!-- ```
-@inproceedings{lin2023SMT,
-  title={Scale-Aware Modulation Meet Transformer},
-  author={Lin, Weifeng and Wu, Ziheng and Chen, Jiayu and Huang, Jun and Jin, Lianwen},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-  year={2023}
+```
+@misc{lin2023scaleaware,
+      title={Scale-Aware Modulation Meet Transformer}, 
+      author={Weifeng Lin and Ziheng Wu and Jiayu Chen and Jun Huang and Lianwen Jin},
+      year={2023},
+      eprint={2307.08579},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
-```  -->
+```
 
 ### Acknowledgement
 This repository is built on top of the [timm](https://github.com/rwightman/pytorch-image-models) library and the official [Swin Transformer](https://github.com/microsoft/Swin-Transformer) repository. For object detection, we utilize [mmdetection](https://github.com/open-mmlab/mmdetection) and adopt the pipeline configuration from [Swin-Transformer-Object-Detection](https://github.com/SwinTransformer/Swin-Transformer-Object-Detection). Moreover, we incorporate [detrex](https://github.com/IDEA-Research/detrex) for implementing the DINO method. As for semantic segmentation, we employ [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) and ollow the pipeline setup outlined in [Swin-Transformer-Semantic-Segmentation](https://github.com/SwinTransformer/Swin-Transformer-Semantic-Segmentation).
