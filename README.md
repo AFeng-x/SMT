@@ -31,7 +31,6 @@ It is a new hybrid ConvNet and vision Transformer backbone, which can effectivel
 | SMT-L | ImageNet-22K | 224x224 | 87.1 | 98.1 | 81M | 17.6G | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k.pth)/[config](configs/smt/smt_large_224_22k.yaml) | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k_224_ft.pth)/[config](configs/smt/smt_large_224_22kto1k_finetune.yaml) |
 | SMT-L | ImageNet-22K | 384x384 | 88.1 | 98.4 | 81M | 51.6G | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k.pth)/[config](configs/smt/smt_large_224_22k.yaml) | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k_384_ft.pth)/[config](configs/smt/smt_large_384_22kto1k_finetune.yaml) |
 
-<!-- [github]()/ -->
 
 ## Main Results on Downstream Tasks
 

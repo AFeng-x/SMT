@@ -7,6 +7,10 @@ from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 from timm.models.registry import register_model
 from timm.models.vision_transformer import _cfg
 import math
+
+from torchvision import transforms
+from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
+from timm.data import create_transform
 from ptflops import get_model_complexity_info
 from thop import profile
 
@@ -82,7 +86,7 @@ class Attention(nn.Module):
             self.q = nn.Linear(dim, dim, bias=qkv_bias)
             self.attn_drop = nn.Dropout(attn_drop)
             self.kv = nn.Linear(dim, dim * 2, bias=qkv_bias)
-            self.dw_conv = nn.Conv2d(dim, dim, kernel_size=3, padding=1, stride=1, groups=dim)
+            self.local_conv = nn.Conv2d(dim, dim, kernel_size=3, padding=1, stride=1, groups=dim)
         
         self.apply(self._init_weights)
 
@@ -128,7 +132,7 @@ class Attention(nn.Module):
             attn = attn.softmax(dim=-1)
             attn = self.attn_drop(attn)
             x = (attn @ v).transpose(1, 2).reshape(B, N, C) + \
-                self.dw_conv(v.transpose(1, 2).reshape(B, N, C).transpose(1, 2).view(B,C, H, W)).view(B, C, N).transpose(1, 2)
+                self.local_conv(v.transpose(1, 2).reshape(B, N, C).transpose(1, 2).view(B,C, H, W)).view(B, C, N).transpose(1, 2)
         
         x = self.proj(x)
         x = self.proj_drop(x)
@@ -364,6 +368,43 @@ class DWConv(nn.Module):
         return x
 
 
+def build_transforms(img_size, center_crop=False):
+    t = []
+    if center_crop:
+        size = int((256 / 224) * img_size)
+        t.append(
+            transforms.Resize(size, interpolation='bicubic')
+        )
+        t.append(
+            transforms.CenterCrop(img_size)    
+        )
+    else:
+        t.append(
+            transforms.Resize(img_size, interpolation='bicubic')
+        )        
+    t.append(transforms.ToTensor())
+    t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
+    return transforms.Compose(t)
+
+
+def build_transforms4display(img_size, center_crop=False):
+    t = []
+    if center_crop:
+        size = int((256 / 224) * img_size)
+        t.append(
+            transforms.Resize(size, interpolation='bicubic')
+        )
+        t.append(
+            transforms.CenterCrop(img_size)    
+        )
+    else:
+        t.append(
+            transforms.Resize(img_size, interpolation='bicubic')
+        )  
+    t.append(transforms.ToTensor())
+    return transforms.Compose(t)
+
+
 def smt_t(pretrained=False, **kwargs):
     model = SMT(
         embed_dims=[64, 128, 256, 512], ca_num_heads=[4, 4, 4, -1], sa_num_heads=[-1, -1, 8, 16], mlp_ratios=[4, 4, 4, 2], 
@@ -371,7 +412,6 @@ def smt_t(pretrained=False, **kwargs):
     model.default_cfg = _cfg()
 
     return model
-
 
 def smt_s(pretrained=False, **kwargs):
     model = SMT(
