@@ -122,7 +122,9 @@ class Attention(nn.Module):
                 else:
                     s_out = torch.cat([s_out,s_i],2)
             s_out = s_out.reshape(B, C, H, W)
-            s_out = self.proj1(self.act(self.bn(self.proj0(s_out)))).reshape(B, C, N).permute(0, 2, 1)
+            s_out = self.proj1(self.act(self.bn(self.proj0(s_out))))
+            self.modulator = s_out
+            s_out = s_out.reshape(B, C, N).permute(0, 2, 1)
             x = s_out * v
 
         else:
