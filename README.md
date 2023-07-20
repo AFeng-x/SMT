@@ -23,13 +23,21 @@ It is a new hybrid ConvNet and vision Transformer backbone, which can effectivel
 
 **ImageNet-1K and ImageNet-22K Pretrained SMT Models**
 
-| name | pretrain | resolution |acc@1 | acc@5 | #params | FLOPs | 22K model | 1K model |
+| Model  | Pretrain | Resolution | Acc@1 | Acc@5 | Params | FLOPs | 22K Model | 1K Model |
+| ------ | -------- | ---------- | ----- | ----- | ------ | ----- | --------- | -------- |
+| SMT-T | ImageNet-1K | 224x224 | 82.2 | 96.0 | 12M | 2.4G | model | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_tiny.pth) / [config](configs/smt/smt_tiny_224.yaml)/ |
+| SMT-S | ImageNet-1K | 224x224 | 83.7 | 96.5 | 21M | 4.7G | model | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_small.pth)/ [config](configs/smt/smt_small_224.yaml) |
+| SMT-B | ImageNet-1K | 224x224 | 84.3 | 96.9 | 32M | 7.7G | model | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_base.pth)/[config](configs/smt/smt_base_224.yaml)|
+| SMT-L | ImageNet-22K | 224x224 | 87.1 | 98.1 | 81M | 17.6G | model | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k.pth)/ [config](configs/smt/smt_large_224_22k.yaml) | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k_224_ft.pth)/ [config](configs/smt/smt_large_224_22kto1k_finetune.yaml) |
+| SMT-L | ImageNet-22K | 384x384 | 88.1 | 98.4 | 81M | 51.6G | model | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k.pth)/ [config](configs/smt/smt_large_224_22k.yaml) | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k_384_ft.pth)/ [config](configs/smt/smt_large_384_22kto1k_finetune.yaml) |
+
+<!-- | name | pretrain | resolution |acc@1 | acc@5 | #params | FLOPs | 22K model | 1K model |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |:---: |
 | SMT-T | ImageNet-1K | 224x224 | 82.2 | 96.0 | 12M | 2.4G | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_tiny.pth)/ [config](configs/smt/smt_tiny_224.yaml)/ |
 | SMT-S | ImageNet-1K | 224x224 | 83.7 | 96.5 | 21M | 4.7G | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_small.pth)/ [config](configs/smt/smt_small_224.yaml) |
 | SMT-B | ImageNet-1K | 224x224 | 84.3 | 96.9 | 32M | 7.7G | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_base.pth)/[config](configs/smt/smt_base_224.yaml)|
 | SMT-L | ImageNet-22K | 224x224 | 87.1 | 98.1 | 81M | 17.6G | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k.pth)/ [config](configs/smt/smt_large_224_22k.yaml) | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k_224_ft.pth)/ [config](configs/smt/smt_large_224_22kto1k_finetune.yaml) |
-| SMT-L | ImageNet-22K | 384x384 | 88.1 | 98.4 | 81M | 51.6G | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k.pth)/ [config](configs/smt/smt_large_224_22k.yaml) | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k_384_ft.pth)/ [config](configs/smt/smt_large_384_22kto1k_finetune.yaml) |
+| SMT-L | ImageNet-22K | 384x384 | 88.1 | 98.4 | 81M | 51.6G | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k.pth)/ [config](configs/smt/smt_large_224_22k.yaml) | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_large_22k_384_ft.pth)/ [config](configs/smt/smt_large_384_22kto1k_finetune.yaml) | -->
 
 <!-- [github]()/ -->
 
