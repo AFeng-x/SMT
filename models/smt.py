@@ -11,6 +11,7 @@ import math
 from torchvision import transforms
 from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.data import create_transform
+from timm.data.transforms import _pil_interp
 from ptflops import get_model_complexity_info
 from thop import profile
 
@@ -373,14 +374,14 @@ def build_transforms(img_size, center_crop=False):
     if center_crop:
         size = int((256 / 224) * img_size)
         t.append(
-            transforms.Resize(size, interpolation='bicubic')
+            transforms.Resize(size, interpolation=_pil_interp('bicubic'))
         )
         t.append(
             transforms.CenterCrop(img_size)    
         )
     else:
         t.append(
-            transforms.Resize(img_size, interpolation='bicubic')
+            transforms.Resize(img_size, interpolation=_pil_interp('bicubic'))
         )        
     t.append(transforms.ToTensor())
     t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
@@ -392,14 +393,14 @@ def build_transforms4display(img_size, center_crop=False):
     if center_crop:
         size = int((256 / 224) * img_size)
         t.append(
-            transforms.Resize(size, interpolation='bicubic')
+            transforms.Resize(size, interpolation=_pil_interp('bicubic'))
         )
         t.append(
             transforms.CenterCrop(img_size)    
         )
     else:
         t.append(
-            transforms.Resize(img_size, interpolation='bicubic')
+            transforms.Resize(img_size, interpolation=_pil_interp('bicubic'))
         )  
     t.append(transforms.ToTensor())
     return transforms.Compose(t)
