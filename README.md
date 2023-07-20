@@ -24,7 +24,7 @@ It is a new hybrid ConvNet and vision Transformer backbone, which can effectivel
 **ImageNet-1K and ImageNet-22K Pretrained SMT Models**
 
 | name | pretrain | resolution |acc@1 | acc@5 | #params | FLOPs | 22K model | 1K model |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |:---------: |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |:---: |:------: |
 | SMT-T | ImageNet-1K | 224x224 | 82.2 | 96.0 | 12M | 2.4G | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_tiny.pth)/[config](configs/smt/smt_tiny_224.yaml)/ |
 | SMT-S | ImageNet-1K | 224x224 | 83.7 | 96.5 | 21M | 4.7G | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_small.pth)/[config](configs/smt/smt_small_224.yaml) |
 | SMT-B | ImageNet-1K | 224x224 | 84.3 | 96.9 | 32M | 7.7G | - | [github](https://github.com/AFeng-x/SMT/releases/download/v1.0.0/smt_base.pth)/[config](configs/smt/smt_base_224.yaml)|
